@@ -15,6 +15,8 @@ var prefabs;
 var cRC = [];
 var assetPath = "./assets/";
 var button1, button2;
+var starCriteria = "killNone";
+var numMoves = 3;
 
 function preload(){
   prefabs = [];
@@ -58,12 +60,12 @@ function setup() {
   }
   
   button1 = createButton('-1');
-  button1.position(prefabSize*3, 19);
+  button1.position(prefabSize*3, 30);
   button1.mousePressed(subRow);
   button1.hide();
   
   button2 = createButton('+1');
-  button2.position(prefabSize*3 + button1.width*2 + 7, 19);
+  button2.position(prefabSize*3 + button1.width*2 + 7, 30);
   button2.mousePressed(addRow);
   /*
   button3 = createButton('-1');
@@ -74,6 +76,12 @@ function setup() {
   button4.position(prefabSize*3 + button1.width*2, 39);
   button4.mousePressed(addCol);
   */
+    
+  input = createInput();
+  input.position(325, 5);
+  button = createButton('Set Name');
+  button.position(input.x + input.width, 5);
+  button.mousePressed(setName);
 }
 
 function draw() {
@@ -87,13 +95,19 @@ function draw() {
   //write the row/col text
   fill(0);
   textSize(16);
-  text("Grid Dimensions", 400, 32);
+  text("Grid Dimensions", 400, 50);
   //text("column", 400, 52);
-  text(numRows + "x" + numRows, 330, 32);
+  text(numRows + "x" + numRows, 330, 50);
   //text(numCols, 340, 52);
+    
+  //write level name data
+  text("Name: " + json.name, 575, 20);
+   
+  //warning
   textSize(11);
   fill(100);
-  text("Warning: Changing the Grid Size removes added tiles.", 320, 50);
+  text("Warning: Changing the Grid Size removes added tiles.", 320, 80);
+    
   
   //draw interactable tiletypes
   var p;
@@ -405,11 +419,15 @@ function keyPressed(){
       }
     }
     //add in star params
-    json.moves = 3;
-    json.star = "killNone";
+    json.moves = numMoves;
+    json.star = starCriteria;
     
     saveJSON(json, 'level.json');
   }
+}
+
+function setName(){
+    json.name = input.value();
 }
 
 
