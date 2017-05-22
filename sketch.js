@@ -404,6 +404,9 @@ function keyPressed(){
           break;
       }
     }
+    //add in star params
+    json.moves = 3;
+    json.star = "killNone";
     
     saveJSON(json, 'level.json');
   }
