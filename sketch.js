@@ -37,7 +37,7 @@ function preload(){
   prefabs.push(new Prefab(10 + prefabSize*2, (prefabOffset + prefabSize)*0, "shadow", "actor", loadImage(assetPath + "shadow.png"), true));
   prefabs.push(new Prefab(10 + prefabSize*2, (prefabOffset + prefabSize)*1, "wraith", "actor",
   loadImage(assetPath + "wraith.png"), true));
-  prefabs.push(new Prefab(10 + prefabSize*2, (prefabOffset + prefabSize)*2, "laser", "actor",
+  prefabs.push(new Prefab(10 + prefabSize*2, (prefabOffset + prefabSize)*2, "laser", "static",
   loadImage(assetPath + "laser.png"), true));
   prefabs.push(new Prefab(10 + prefabSize*2, (prefabOffset + prefabSize)*3, "trap", "static", loadImage(assetPath + "trap.png"), true));
 }
